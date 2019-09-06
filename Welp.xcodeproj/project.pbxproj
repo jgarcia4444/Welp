@@ -3,25 +3,39 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F30F7F22321C0A900056F2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F30F7F12321C0A900056F2C /* GoogleService-Info.plist */; };
+		1F30F7F82321C43500056F2C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30F7F72321C43500056F2C /* LoginViewController.swift */; };
+		1F30F7FA2321C44400056F2C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30F7F92321C44400056F2C /* RegisterViewController.swift */; };
+		1F39BC1D23205C74004EE9E9 /* strainJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39BC1C23205C74004EE9E9 /* strainJSON.swift */; };
+		1FACB53923230CE3009C6A3E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FACB53823230CE3009C6A3E /* HomeViewController.swift */; };
 		1FEA6BCB231F7C8F009C4F3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA6BCA231F7C8F009C4F3A /* AppDelegate.swift */; };
-		1FEA6BCD231F7C8F009C4F3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA6BCC231F7C8F009C4F3A /* ViewController.swift */; };
+		1FEA6BCD231F7C8F009C4F3A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA6BCC231F7C8F009C4F3A /* WelcomeViewController.swift */; };
 		1FEA6BD0231F7C8F009C4F3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEA6BCE231F7C8F009C4F3A /* Main.storyboard */; };
 		1FEA6BD2231F7C90009C4F3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FEA6BD1231F7C90009C4F3A /* Assets.xcassets */; };
 		1FEA6BD5231F7C90009C4F3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEA6BD3231F7C90009C4F3A /* LaunchScreen.storyboard */; };
+		58A9C850F44737E0FA3453DD /* Pods_Welp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A03862FF65014A6194C1A8E /* Pods_Welp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04CA81A32560F5DF80C1F415 /* Pods-Welp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Welp.debug.xcconfig"; path = "Target Support Files/Pods-Welp/Pods-Welp.debug.xcconfig"; sourceTree = "<group>"; };
+		0A03862FF65014A6194C1A8E /* Pods_Welp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Welp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F30F7F12321C0A900056F2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1F30F7F72321C43500056F2C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1F30F7F92321C44400056F2C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		1F39BC1C23205C74004EE9E9 /* strainJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strainJSON.swift; sourceTree = "<group>"; };
+		1FACB53823230CE3009C6A3E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1FEA6BC7231F7C8F009C4F3A /* Welp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Welp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FEA6BCA231F7C8F009C4F3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1FEA6BCC231F7C8F009C4F3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1FEA6BCC231F7C8F009C4F3A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		1FEA6BCF231F7C8F009C4F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FEA6BD1231F7C90009C4F3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FEA6BD4231F7C90009C4F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FEA6BD6231F7C90009C4F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B8157995F185EB5999EF3EA /* Pods-Welp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Welp.release.xcconfig"; path = "Target Support Files/Pods-Welp/Pods-Welp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +43,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A9C850F44737E0FA3453DD /* Pods_Welp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F39BC1E2320EAFA004EE9E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1FEA6BCE231F7C8F009C4F3A /* Main.storyboard */,
+				1FEA6BD3231F7C90009C4F3A /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1F39DDB52320EB570028CA92 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1FEA6BCC231F7C8F009C4F3A /* WelcomeViewController.swift */,
+				1F30F7F72321C43500056F2C /* LoginViewController.swift */,
+				1F30F7F92321C44400056F2C /* RegisterViewController.swift */,
+				1FACB53823230CE3009C6A3E /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1F39DDB62320EBE40028CA92 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1FEA6BBE231F7C8F009C4F3A = {
 			isa = PBXGroup;
 			children = (
 				1FEA6BC9231F7C8F009C4F3A /* Welp */,
 				1FEA6BC8231F7C8F009C4F3A /* Products */,
+				E5CAEB230595D37522DC85F1 /* Pods */,
+				F9329B1F5814C079EE922B15 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +98,33 @@
 		1FEA6BC9231F7C8F009C4F3A /* Welp */ = {
 			isa = PBXGroup;
 			children = (
+				1F39DDB62320EBE40028CA92 /* Model */,
+				1F39BC1E2320EAFA004EE9E9 /* Views */,
+				1F39DDB52320EB570028CA92 /* Controllers */,
 				1FEA6BCA231F7C8F009C4F3A /* AppDelegate.swift */,
-				1FEA6BCC231F7C8F009C4F3A /* ViewController.swift */,
-				1FEA6BCE231F7C8F009C4F3A /* Main.storyboard */,
 				1FEA6BD1231F7C90009C4F3A /* Assets.xcassets */,
-				1FEA6BD3231F7C90009C4F3A /* LaunchScreen.storyboard */,
 				1FEA6BD6231F7C90009C4F3A /* Info.plist */,
+				1F30F7F12321C0A900056F2C /* GoogleService-Info.plist */,
+				1F39BC1C23205C74004EE9E9 /* strainJSON.swift */,
 			);
 			path = Welp;
+			sourceTree = "<group>";
+		};
+		E5CAEB230595D37522DC85F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04CA81A32560F5DF80C1F415 /* Pods-Welp.debug.xcconfig */,
+				8B8157995F185EB5999EF3EA /* Pods-Welp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F9329B1F5814C079EE922B15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A03862FF65014A6194C1A8E /* Pods_Welp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +134,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FEA6BD9231F7C90009C4F3A /* Build configuration list for PBXNativeTarget "Welp" */;
 			buildPhases = (
+				37F2EDAE4EDDC5D4BC51E09A /* [CP] Check Pods Manifest.lock */,
 				1FEA6BC3231F7C8F009C4F3A /* Sources */,
 				1FEA6BC4231F7C8F009C4F3A /* Frameworks */,
 				1FEA6BC5231F7C8F009C4F3A /* Resources */,
+				A7FBCBE35FAA4AF2B89E78AD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FEA6BD5231F7C90009C4F3A /* LaunchScreen.storyboard in Resources */,
+				1F30F7F22321C0A900056F2C /* GoogleService-Info.plist in Resources */,
 				1FEA6BD2231F7C90009C4F3A /* Assets.xcassets in Resources */,
 				1FEA6BD0231F7C8F009C4F3A /* Main.storyboard in Resources */,
 			);
@@ -130,13 +196,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		37F2EDAE4EDDC5D4BC51E09A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Welp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7FBCBE35FAA4AF2B89E78AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Welp/Pods-Welp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Welp/Pods-Welp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Welp/Pods-Welp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1FEA6BC3231F7C8F009C4F3A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FEA6BCD231F7C8F009C4F3A /* ViewController.swift in Sources */,
+				1F30F7F82321C43500056F2C /* LoginViewController.swift in Sources */,
+				1F30F7FA2321C44400056F2C /* RegisterViewController.swift in Sources */,
+				1FEA6BCD231F7C8F009C4F3A /* WelcomeViewController.swift in Sources */,
 				1FEA6BCB231F7C8F009C4F3A /* AppDelegate.swift in Sources */,
+				1F39BC1D23205C74004EE9E9 /* strainJSON.swift in Sources */,
+				1FACB53923230CE3009C6A3E /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +392,7 @@
 		};
 		1FEA6BDA231F7C90009C4F3A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04CA81A32560F5DF80C1F415 /* Pods-Welp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +411,7 @@
 		};
 		1FEA6BDB231F7C90009C4F3A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B8157995F185EB5999EF3EA /* Pods-Welp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
