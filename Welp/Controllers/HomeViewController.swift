@@ -13,6 +13,8 @@ class HomeViewController: UIViewController {
     
     var loggedInUser: User?
     
+    @IBOutlet weak var welcomeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +31,19 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var welcomeLabel: UILabel!
+    
+    @IBAction func signoutButtonPressed(_ sender: UIButton) {
+        
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("Error signing out: \(error)")
+        }
+        
+        navigationController?.popToRootViewController(animated: true)
+        
+    }
+    
     
 
 }
