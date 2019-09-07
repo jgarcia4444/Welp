@@ -117,7 +117,6 @@
                                 <state key="normal" title="Register"/>
                                 <connections>
                                     <action selector="registerButtonPressed:" destination="sUY-MG-gf0" eventType="touchUpInside" id="Kcx-HU-pU6"/>
-                                    <segue destination="VWL-FD-WZd" kind="show" identifier="goToHomepage" id="SQs-uS-D5t"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -128,6 +127,7 @@
                         <outlet property="confirmPasswordTextField" destination="cC3-rZ-VjY" id="S5Y-Ex-guV"/>
                         <outlet property="emailTextField" destination="WVa-Sa-P77" id="3A9-pq-dTI"/>
                         <outlet property="passwordTextField" destination="8lE-je-LaQ" id="f3S-bC-gYY"/>
+                        <segue destination="VWL-FD-WZd" kind="show" identifier="goToHomepage" id="Umm-2M-49S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0P-g9-dHB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -142,7 +142,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wx0-bB-dxG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.65000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="wx0-bB-dxG">
                                 <rect key="frame" x="87" y="236" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="35"/>

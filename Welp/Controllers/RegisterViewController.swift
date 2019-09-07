@@ -15,6 +15,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
+    let newUser = User()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Register"
@@ -37,6 +39,9 @@ class RegisterViewController: UIViewController {
             Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
                 if error != nil {
                     fatalError("error creating new user \(error!)")
+                } else {
+                    self.newUser.email = email
+                    self.newUser.password = password
                 }
             }
         }
@@ -44,7 +49,5 @@ class RegisterViewController: UIViewController {
         performSegue(withIdentifier: "goToHomepage", sender: Any?.self)
         
     }
-    
-    
 
 }
