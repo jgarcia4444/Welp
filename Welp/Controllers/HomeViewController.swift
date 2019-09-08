@@ -51,11 +51,9 @@ class HomeViewController: UIViewController {
         guard let message = messageTextField.text else {
             fatalError("No message was given")
         }
-        guard let userEmail = loggedInUser?.email else {
-            fatalError("No email was found for the logged in user")
-        }
         
-        let newMessage = ["message": message, "email": userEmail]
+        
+        let newMessage = ["message": message, "email": loggedInUser?.email]
         
         Database.database().reference().child("messages").setValue(newMessage) { (error, ref) in
             

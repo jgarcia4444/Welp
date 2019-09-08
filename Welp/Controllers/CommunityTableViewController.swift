@@ -11,31 +11,29 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class CommunityTableViewController: UITableViewController {
-
+    
+    let ref = Database.database().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
 
     // MARK: - Table view data source
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return messages.count
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        
-//        cell.textLabel?.text = "User Email: \(messages[indexPath.row]["userEmail"]) Message: \(messages[indexPath.row]["message"])"
-//        
-//        return cell
-//        
-//    }
-//    
-//    
-//    // MARK: - Load messages
-//    func loadMessages() {
-//        messages = (Database.database().reference().value(forKey: "messages") as! [Message])
-//    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ref.child("messages").key?.count ?? 1
+    }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        guard let message = ref.child("messages").value(forKey: "message") else {
+            fatalError("unable to retrieve message")
+        }
+        
+        cell.textLabel?.text = message as? String
+        
+        return cell
+    }
 
 }
