@@ -8,12 +8,14 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class HomeViewController: UIViewController {
     
     var loggedInUser: User?
     
     @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var messageTextField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    
+    // MARK: - IBActions
     @IBAction func signoutButtonPressed(_ sender: UIButton) {
         
         do {
@@ -40,10 +42,33 @@ class HomeViewController: UIViewController {
             print("Error signing out: \(error)")
         }
         
-        navigationController?.popToRootViewController(animated: true)
+        navigationController?.popToRootViewController(animated: true) 
         
     }
     
+    @IBAction func shareButtonPressed(_ sender: UIButton) {
+        
+        guard let message = messageTextField.text else {
+            fatalError("No message was given")
+        }
+        guard let userEmail = loggedInUser?.email else {
+            fatalError("No email was found for the logged in user")
+        }
+        
+        let newMessage = ["message": message, "email": userEmail]
+        
+        Database.database().reference().child("messages").setValue(newMessage) { (error, ref) in
+            
+            // Show spinner
+            
+            self.performSegue(withIdentifier: "goToCommunity", sender: Any?.self)
+            
+        }
+        
+    }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 
 }

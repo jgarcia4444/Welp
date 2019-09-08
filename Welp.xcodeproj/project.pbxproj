@@ -12,6 +12,7 @@
 		1F30F7FA2321C44400056F2C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30F7F92321C44400056F2C /* RegisterViewController.swift */; };
 		1F37F42323238E180092B227 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37F42223238E180092B227 /* User.swift */; };
 		1F39BC1D23205C74004EE9E9 /* strainJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39BC1C23205C74004EE9E9 /* strainJSON.swift */; };
+		1F6F5A2A2324720E00A105AA /* CommunityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F5A292324720E00A105AA /* CommunityTableViewController.swift */; };
 		1FACB53923230CE3009C6A3E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FACB53823230CE3009C6A3E /* HomeViewController.swift */; };
 		1FEA6BCB231F7C8F009C4F3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA6BCA231F7C8F009C4F3A /* AppDelegate.swift */; };
 		1FEA6BCD231F7C8F009C4F3A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA6BCC231F7C8F009C4F3A /* WelcomeViewController.swift */; };
@@ -29,6 +30,7 @@
 		1F30F7F92321C44400056F2C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1F37F42223238E180092B227 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1F39BC1C23205C74004EE9E9 /* strainJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strainJSON.swift; sourceTree = "<group>"; };
+		1F6F5A292324720E00A105AA /* CommunityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTableViewController.swift; sourceTree = "<group>"; };
 		1FACB53823230CE3009C6A3E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1FEA6BC7231F7C8F009C4F3A /* Welp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Welp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FEA6BCA231F7C8F009C4F3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				1F30F7F72321C43500056F2C /* LoginViewController.swift */,
 				1F30F7F92321C44400056F2C /* RegisterViewController.swift */,
 				1FACB53823230CE3009C6A3E /* HomeViewController.swift */,
+				1F6F5A292324720E00A105AA /* CommunityTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				1FEA6BCD231F7C8F009C4F3A /* WelcomeViewController.swift in Sources */,
 				1FEA6BCB231F7C8F009C4F3A /* AppDelegate.swift in Sources */,
 				1F39BC1D23205C74004EE9E9 /* strainJSON.swift in Sources */,
+				1F6F5A2A2324720E00A105AA /* CommunityTableViewController.swift in Sources */,
 				1FACB53923230CE3009C6A3E /* HomeViewController.swift in Sources */,
 				1F37F42323238E180092B227 /* User.swift in Sources */,
 			);
