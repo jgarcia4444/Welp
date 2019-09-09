@@ -18,14 +18,25 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var agePicker: UIPickerView!
     
+    var usersAge: Int?
+    var agePickerContent = [Int]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Register"
         // Do any additional setup after loading the view.
-        
+        populateDataSource()
         agePicker.delegate = self
-        agePicker.dataSource = self
+        agePicker.dataSource = agePickerContent as? UIPickerViewDataSource
         
+    }
+    
+    // Populate the age picker content array
+    
+    func populateDataSource() {
+        for i in 1...81 {
+            agePickerContent.append(i)
+        }
     }
     
     // MARK: - Picker View Data Source
@@ -34,11 +45,19 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 10
+        return 80
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(format: "%i", row + 18)
+        return String(format: "%i", row + 1)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        usersAge = agePickerContent[row]
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     
@@ -59,6 +78,36 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         guard let lName = lastNameTextField.text else {
             fatalError("A last name was not given")
+        }
+        
+        guard let age = usersAge else {
+            fatalError("No age was selected")
+        }
+        
+        if age >= 21 {
+            
+            Auth.auth().createUser(withEmail: userEmail, password: password) { (authResult, error) in
+                
+                if error != nil {
+                    print("Error creating new user in firebase: \(error!)")
+                } else {
+                    self.performSegue(withIdentifier: "goToHomepage", sender: Any?.self)
+                }
+                
+            }
+        } else {
+            let alert = UIAlertController(title: "Access Denied", message: "Unfortunately you must be 21 years old to use this app", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "OK", style: .cancel) { (alertAction) in
+                
+                alert.dismiss(animated: true, completion: nil)
+                
+            }
+            
+            alert.addAction(action)
+            
+            present(alert, animated: true)
+            
         }
         
     }
