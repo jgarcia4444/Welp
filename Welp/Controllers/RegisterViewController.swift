@@ -9,44 +9,57 @@
 import UIKit
 import FirebaseAuth
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    
-    let newUser = User()
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var agePicker: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Register"
         // Do any additional setup after loading the view.
+        
+        agePicker.delegate = self
+        agePicker.dataSource = self
+        
     }
+    
+    // MARK: - Picker View Data Source
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 10
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(format: "%i", row + 18)
+    }
+    
     
     
 
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
-        guard let email = emailTextField?.text else {
-            fatalError("Email was found to be nil")
+        guard let userEmail = emailTextField.text else {
+            fatalError("An email was not given")
+        }
+        guard let password = passwordTextField.text else {
+            fatalError("A password was not given")
         }
         
-        guard let password = passwordTextField?.text, let confirmPassword = confirmPasswordTextField?.text else {
-            fatalError("password or confirm password text field were found nil")
+        guard let fName = firstNameTextField.text else {
+            fatalError("A first name was not given")
         }
         
-        if password == confirmPassword {
-            Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-                if error != nil {
-                    fatalError("error creating new user \(error!)")
-                } else {
-                    self.newUser.email = email
-                    self.newUser.password = password
-                }
-            }
+        guard let lName = lastNameTextField.text else {
+            fatalError("A last name was not given")
         }
-        
-        performSegue(withIdentifier: "goToHomepage", sender: Any?.self)
         
     }
 
