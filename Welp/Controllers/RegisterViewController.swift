@@ -72,6 +72,10 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             fatalError("A password was not given")
         }
         
+        guard let confirmPassword = confirmPasswordTextField.text else {
+            fatalError("No confirm password was given")
+        }
+        
         guard let fName = firstNameTextField.text else {
             fatalError("A first name was not given")
         }
@@ -86,30 +90,44 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         if age >= 21 {
             
-            Auth.auth().createUser(withEmail: userEmail, password: password) { (authResult, error) in
-                
-                if error != nil {
-                    print("Error creating new user in firebase: \(error!)")
-                } else {
-                    self.performSegue(withIdentifier: "goToHomepage", sender: Any?.self)
+            if password == confirmPassword {
+                Auth.auth().createUser(withEmail: userEmail, password: password) { (authResult, error) in
+                    
+                    if error != nil {
+                        print("Error creating new user in firebase: \(error!)")
+                    } else {
+                        self.performSegue(withIdentifier: "goToHomepage", sender: Any?.self)
+                    }
                 }
-                
+            } else {
+                let alert = createAlert(errorMessage: "Oops, your passwords didn't quite match.")
+                present(alert, animated: true)
             }
+            
+            
         } else {
-            let alert = UIAlertController(title: "Access Denied", message: "Unfortunately you must be 21 years old to use this app", preferredStyle: .alert)
-            
-            let action = UIAlertAction(title: "OK", style: .cancel) { (alertAction) in
-                
-                alert.dismiss(animated: true, completion: nil)
-                
-            }
-            
-            alert.addAction(action)
-            
+            let alert = createAlert(errorMessage: "Sorry, you must be 21 years old to use this app.")
             present(alert, animated: true)
-            
         }
         
     }
 
+}
+
+// MARK: - UI Functions
+
+// create an alert function
+
+func createAlert(errorMessage: String) -> UIAlertController {
+    
+    let alert = UIAlertController(title: "Access Denied", message: errorMessage, preferredStyle: .alert)
+    
+    let action = UIAlertAction(title: "OK", style: .cancel) { (alertAction) in
+        alert.dismiss(animated: true, completion: nil)
+    }
+    
+    alert.addAction(action)
+    
+    return alert
+    
 }
