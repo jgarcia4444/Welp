@@ -7,15 +7,21 @@
 //
 
 import Foundation
-import RealmSwift
 
 
-class User: Object {
+class User {
     
-    @objc dynamic var email: String?
-    @objc dynamic var password: String?
-    @objc dynamic var fName : String?
-    @objc dynamic var lName : String?
+    var email: String?
+//    var password: String?
+    var fName : String?
+    var lName : String?
     var age : Int?
+    
+    init(userEmail: String, userFName: String, userLName: String, userAge: Int) {
+        self.email = userEmail
+        self.fName = userFName
+        self.lName = userLName
+        self.age = userAge
+    }
     
 }

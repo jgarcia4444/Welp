@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseAuth
-import RealmSwift
+import FirebaseDatabase
 
 class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -21,7 +21,6 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     var usersAge: Int?
     var agePickerContent = [Int]()
-    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,20 +122,9 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                         }
                     }
                     
-                    let user = User()
-                    user.email = userEmail
-                    user.password = password
-                    user.fName = fName
-                    user.lName = lName
-                    user.age = age
+                    let user = User(userEmail: userEmail, userFName: fName, userLName: lName, userAge: age)
                     
-                    do {
-                        try realm.write {
-                            realm.add(user)
-                        }
-                    } catch {
-                        fatalError("Unable to save the users info locally")
-                    }
+                    saveUser(userInfo: user)
                     
                 } else {
                     createAlert(errorMessage: "Oops, your passwords didn't quite match.")
@@ -147,6 +135,25 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 createAlert(errorMessage: "Sorry, you must be 21 years old to use this app.")
             }
         }
+        
+        
+    }
+    
+    // MARK: - Database functions
+    
+    // Save User to users database
+    func saveUser(userInfo: User) {
+        let ref = Database.database().reference()
+        if let userID = Auth.auth().currentUser?.uid {
+            ref.child("users").child(userID).setValue([
+                "email" : userInfo.email!,
+                "firstName" : userInfo.fName!,
+                "lastName" : userInfo.lName!,
+                "age" : userInfo.age!
+                ])
+        }
+        
+        
         
         
     }

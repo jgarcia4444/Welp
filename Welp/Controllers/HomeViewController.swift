@@ -9,14 +9,14 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
-import RealmSwift
 
 class HomeViewController: UIViewController {
     
-    let realm = try! Realm()
     
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var messageTextField: UITextView!
+    
+    let ref = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +25,7 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if let loggedInUser = realm.objects(User.self).first {
-            welcomeLabel.text = "Hello \(loggedInUser.fName!)."
-        }
+        
     }
     
     // MARK: - IBActions
@@ -48,22 +46,29 @@ class HomeViewController: UIViewController {
 //        guard let message = messageTextField.text else {
 //            fatalError("No message was given")
 //        }
-//        
-//        
+//
+//
 //        let newMessage = ["message": message, "email": loggedInUser?.email]
-//        
+//
 //        Database.database().reference().child("messages").setValue(newMessage) { (error, ref) in
-//            
+//
 //            // Show spinner
-//            
+//
 //            self.performSegue(withIdentifier: "goToCommunity", sender: Any?.self)
-//            
+//
 //        }
         
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    //MARK: - UIUpdate Functions
+    
+    // Update Messsage Label
+    func updateMessageLabel(name: String) {
+        messageTextField.text = "Hello \(name)"
     }
 
 }
