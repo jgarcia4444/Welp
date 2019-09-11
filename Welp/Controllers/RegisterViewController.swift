@@ -65,69 +65,77 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
+        authenticateUserInfo()
+        
+    }
+    
+    // MARK: - UI Functions
+    
+    // create an alert function
+    
+    func createAlert(errorMessage: String) {
+        
+        let alert = UIAlertController(title: "Access Denied", message: errorMessage, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .cancel) { (alertAction) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true)
+    }
+    
+    func authenticateUserInfo() {
+        
         guard let userEmail = emailTextField.text else {
             fatalError("An email was not given")
         }
         guard let password = passwordTextField.text else {
             fatalError("A password was not given")
         }
-        
         guard let confirmPassword = confirmPasswordTextField.text else {
             fatalError("No confirm password was given")
         }
-        
         guard let fName = firstNameTextField.text else {
             fatalError("A first name was not given")
         }
-        
         guard let lName = lastNameTextField.text else {
             fatalError("A last name was not given")
         }
-        
         guard let age = usersAge else {
             fatalError("No age was selected")
         }
-        
-        if age >= 21 {
-            
-            if password == confirmPassword {
-                Auth.auth().createUser(withEmail: userEmail, password: password) { (authResult, error) in
-                    
-                    if error != nil {
-                        print("Error creating new user in firebase: \(error!)")
-                    } else {
-                        self.performSegue(withIdentifier: "goToHomepage", sender: Any?.self)
-                    }
-                }
-            } else {
-                let alert = createAlert(errorMessage: "Oops, your passwords didn't quite match.")
-                present(alert, animated: true)
-            }
-            
-            
+        if password.count < 8 {
+            createAlert(errorMessage: "Your password must be a minimum of 8 characters long")
         } else {
-            let alert = createAlert(errorMessage: "Sorry, you must be 21 years old to use this app.")
-            present(alert, animated: true)
+            if age >= 21 {
+                
+                if password == confirmPassword {
+                    Auth.auth().createUser(withEmail: userEmail, password: password) { (authResult, error) in
+                        
+                        if error != nil {
+                            print("Error creating new user in firebase: \(error!)")
+                        } else {
+                            self.performSegue(withIdentifier: "goToHomepage", sender: Any?.self)
+                        }
+                    }
+                    
+                    
+                    
+                } else {
+                    createAlert(errorMessage: "Oops, your passwords didn't quite match.")
+                }
+                
+                
+            } else {
+                createAlert(errorMessage: "Sorry, you must be 21 years old to use this app.")
+            }
         }
         
+        
     }
 
 }
 
-// MARK: - UI Functions
 
-// create an alert function
-
-func createAlert(errorMessage: String) -> UIAlertController {
-    
-    let alert = UIAlertController(title: "Access Denied", message: errorMessage, preferredStyle: .alert)
-    
-    let action = UIAlertAction(title: "OK", style: .cancel) { (alertAction) in
-        alert.dismiss(animated: true, completion: nil)
-    }
-    
-    alert.addAction(action)
-    
-    return alert
-    
-}
