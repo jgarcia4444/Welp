@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import RealmSwift
 
 class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -20,6 +21,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     var usersAge: Int?
     var agePickerContent = [Int]()
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +123,20 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                         }
                     }
                     
+                    let user = User()
+                    user.email = userEmail
+                    user.password = password
+                    user.fName = fName
+                    user.lName = lName
+                    user.age = age
                     
+                    do {
+                        try realm.write {
+                            realm.add(user)
+                        }
+                    } catch {
+                        fatalError("Unable to save the users info locally")
+                    }
                     
                 } else {
                     createAlert(errorMessage: "Oops, your passwords didn't quite match.")

@@ -9,10 +9,11 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import RealmSwift
 
 class HomeViewController: UIViewController {
     
-    var loggedInUser: User?
+    let realm = try! Realm()
     
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var messageTextField: UITextView!
@@ -24,12 +25,8 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if let user = user {
-                self.welcomeLabel.text = "Hello \(user.email!)"
-            } else {
-                self.welcomeLabel.text = "Hello (blank)"
-            }
+        if let loggedInUser = realm.objects(User.self).first {
+            welcomeLabel.text = "Hello \(loggedInUser.fName!)."
         }
     }
     
@@ -48,20 +45,20 @@ class HomeViewController: UIViewController {
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         
-        guard let message = messageTextField.text else {
-            fatalError("No message was given")
-        }
-        
-        
-        let newMessage = ["message": message, "email": loggedInUser?.email]
-        
-        Database.database().reference().child("messages").setValue(newMessage) { (error, ref) in
-            
-            // Show spinner
-            
-            self.performSegue(withIdentifier: "goToCommunity", sender: Any?.self)
-            
-        }
+//        guard let message = messageTextField.text else {
+//            fatalError("No message was given")
+//        }
+//        
+//        
+//        let newMessage = ["message": message, "email": loggedInUser?.email]
+//        
+//        Database.database().reference().child("messages").setValue(newMessage) { (error, ref) in
+//            
+//            // Show spinner
+//            
+//            self.performSegue(withIdentifier: "goToCommunity", sender: Any?.self)
+//            
+//        }
         
     }
     
