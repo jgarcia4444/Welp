@@ -17,8 +17,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var messageTextField: UITextView!
     
     
-    let ref = Database.database().reference(withPath: "users")
-    var loggedInUserID = Auth.auth().currentUser?.uid
+    let usersRef = Database.database().reference(withPath: "users")
+    let communityRef = Database.database().reference(withPath: "communityMessages")
+    let loggedInUserID = Auth.auth().currentUser?.uid
     
     
     
@@ -30,6 +31,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         loadUserInfo()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     // MARK: - IBActions
@@ -47,26 +52,11 @@ class HomeViewController: UIViewController {
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         
-//        guard let message = messageTextField.text else {
-//            fatalError("No message was given")
-//        }
-//
-//
-//        let newMessage = ["message": message, "email": loggedInUser?.email]
-//
-//        Database.database().reference().child("messages").setValue(newMessage) { (error, ref) in
-//
-//            // Show spinner
-//
-//            self.performSegue(withIdentifier: "goToCommunity", sender: Any?.self)
-//
-//        }
+        
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
+   
     
     //MARK: - UIUpdate Functions
     
@@ -74,28 +64,27 @@ class HomeViewController: UIViewController {
     func updateMessageLabel(name: String) {
         welcomeLabel.text = "Hello \(name)"
     }
-    
-    // Save user info
-    
-    
+    //MARK: - Save to database
     
     // Load User Info
     
     func loadUserInfo() {
-        
         if let userID = loggedInUserID {
-            
-            ref.child(userID).observe(.value) { (snapshot) in
-                
+            usersRef.child(userID).observe(.value) { (snapshot) in
                 let value = snapshot.value as? NSDictionary
                 if let userDict = value {
                     let fName = userDict["firstName"] as! String
                     self.updateMessageLabel(name: fName)
                 }
             }
-            
         }
+    }
+    
+    // Save Share Message
+    func saveMessage(newMessage: String) {
+        
+        communityRef.child(<#T##pathString: String##String#>)
         
     }
-
+    
 }
