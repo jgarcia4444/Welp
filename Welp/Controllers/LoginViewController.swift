@@ -14,8 +14,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Login"
@@ -43,6 +41,12 @@ class LoginViewController: UIViewController {
             
         }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? HomeViewController {
+            destinationVC.loggedInUserID = Auth.auth().currentUser?.uid
+        }
     }
     
     

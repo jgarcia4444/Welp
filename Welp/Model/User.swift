@@ -24,4 +24,17 @@ class User {
         self.age = userAge
     }
     
+    func toAnyObject(user: User) -> [String: String] {
+        
+        let userDict = [
+            "firstName": user.fName!,
+            "lastName": user.lName!,
+            "email": user.email!,
+            "age": String(user.age!)
+        ]
+        
+        return userDict
+        
+    }
+    
 }

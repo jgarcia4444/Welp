@@ -21,6 +21,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     var usersAge: Int?
     var agePickerContent = [Int]()
+    var userToBeSaved: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,10 +122,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                             self.performSegue(withIdentifier: "goToHomepage", sender: Any?.self)
                         }
                     }
-                    
-                    let user = User(userEmail: userEmail, userFName: fName, userLName: lName, userAge: age)
-                    
-                    saveUser(userInfo: user)
+                    userToBeSaved = User(userEmail: userEmail, userFName: fName, userLName: lName, userAge: age)
                     
                 } else {
                     createAlert(errorMessage: "Oops, your passwords didn't quite match.")
@@ -138,25 +136,23 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         
     }
-    
     // MARK: - Database functions
-    
-    // Save User to users database
-    func saveUser(userInfo: User) {
-        let ref = Database.database().reference()
-        if let userID = Auth.auth().currentUser?.uid {
-            ref.child("users").child(userID).setValue([
-                "email" : userInfo.email!,
-                "firstName" : userInfo.fName!,
-                "lastName" : userInfo.lName!,
-                "age" : userInfo.age!
-                ])
-        }
-        
-        
-        
-        
+    func saveUser(userInfo: User, userID: String) {
+        let ref = Database.database().reference(withPath: "users")
+        let userDict = userInfo.toAnyObject(user: userInfo)
+        ref.child(userID).setValue(userDict)
     }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let currentUserID = Auth.auth().currentUser?.uid {
+            saveUser(userInfo: userToBeSaved!, userID: currentUserID)
+        }
+    }
+    
+    
+    
 
 }
 

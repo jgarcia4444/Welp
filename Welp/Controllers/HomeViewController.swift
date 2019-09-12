@@ -16,16 +16,20 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var messageTextField: UITextView!
     
-    let ref = Database.database().reference()
+    
+    let ref = Database.database().reference(withPath: "users")
+    var loggedInUserID = Auth.auth().currentUser?.uid
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    override func viewDidAppear(_ animated: Bool) {
+        loadUserInfo()
     }
     
     // MARK: - IBActions
@@ -68,7 +72,30 @@ class HomeViewController: UIViewController {
     
     // Update Messsage Label
     func updateMessageLabel(name: String) {
-        messageTextField.text = "Hello \(name)"
+        welcomeLabel.text = "Hello \(name)"
+    }
+    
+    // Save user info
+    
+    
+    
+    // Load User Info
+    
+    func loadUserInfo() {
+        
+        if let userID = loggedInUserID {
+            
+            ref.child(userID).observe(.value) { (snapshot) in
+                
+                let value = snapshot.value as? NSDictionary
+                if let userDict = value {
+                    let fName = userDict["firstName"] as! String
+                    self.updateMessageLabel(name: fName)
+                }
+            }
+            
+        }
+        
     }
 
 }
