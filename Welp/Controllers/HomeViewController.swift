@@ -19,8 +19,8 @@ class HomeViewController: UIViewController {
     
     let usersRef = Database.database().reference(withPath: "users")
     let communityRef = Database.database().reference(withPath: "communityMessages")
-    let loggedInUserID = Auth.auth().currentUser?.uid
-    
+    var loggedInUserID = Auth.auth().currentUser?.uid
+    var currentUser: User?
     
     
     override func viewDidLoad() {
@@ -29,8 +29,12 @@ class HomeViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         loadUserInfo()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateMessageLabel(name: currentUser!.fName!)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -52,7 +56,10 @@ class HomeViewController: UIViewController {
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         
-        
+        if let newMessage = messageTextField.text {
+            saveMessage(newMessage: newMessage)
+            performSegue(withIdentifier: "goToCommunity", sender: Any?.self)
+        }
         
     }
     
@@ -73,8 +80,8 @@ class HomeViewController: UIViewController {
             usersRef.child(userID).observe(.value) { (snapshot) in
                 let value = snapshot.value as? NSDictionary
                 if let userDict = value {
-                    let fName = userDict["firstName"] as! String
-                    self.updateMessageLabel(name: fName)
+                    let thisUser = User().toUserObject(userDict: userDict as! [String : Any])
+                    self.currentUser = thisUser
                 }
             }
         }
@@ -83,7 +90,7 @@ class HomeViewController: UIViewController {
     // Save Share Message
     func saveMessage(newMessage: String) {
         
-        communityRef.child(<#T##pathString: String##String#>)
+        
         
     }
     

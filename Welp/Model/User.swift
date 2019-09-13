@@ -15,9 +15,11 @@ class User {
 //    var password: String?
     var fName : String?
     var lName : String?
-    var age : Int?
+    var age : String?
     
-    init(userEmail: String, userFName: String, userLName: String, userAge: Int) {
+    
+    convenience init(userEmail: String, userFName: String, userLName: String, userAge: String) {
+        self.init()
         self.email = userEmail
         self.fName = userFName
         self.lName = userLName
@@ -32,9 +34,27 @@ class User {
             "email": user.email!,
             "age": String(user.age!)
         ]
-        
         return userDict
+    }
+    
+    func toUserObject(userDict: [String: Any]) -> User {
         
+        
+        guard let dictFName = userDict["firstName"] as? String else {
+            fatalError("No value for the first name was found")
+        }
+        guard let dictLName = userDict["lastName"] as? String else {
+            fatalError("No value for the last name was found")
+        }
+        guard let dictEmail = userDict["email"] as? String else {
+            fatalError("No value for the email was found")
+        }
+        guard let dictAge = userDict["age"] as? String else {
+            fatalError("No value for the age was found")
+        }
+        let userValue = User(userEmail: dictEmail, userFName: dictFName, userLName: dictLName, userAge: dictAge)
+        
+        return userValue
     }
     
 }

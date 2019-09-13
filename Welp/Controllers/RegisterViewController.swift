@@ -122,7 +122,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                             self.performSegue(withIdentifier: "goToHomepage", sender: Any?.self)
                         }
                     }
-                    userToBeSaved = User(userEmail: userEmail, userFName: fName, userLName: lName, userAge: age)
+                    userToBeSaved = User(userEmail: userEmail, userFName: fName, userLName: lName, userAge: String(age))
                     
                 } else {
                     createAlert(errorMessage: "Oops, your passwords didn't quite match.")

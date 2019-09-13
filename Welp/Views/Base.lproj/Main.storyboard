@@ -301,10 +301,10 @@
             </objects>
             <point key="canvasLocation" x="3061.5999999999999" y="621.42857142857144"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Community Table View Controller-->
         <scene sceneID="aet-UI-EQx">
             <objects>
-                <tableViewController id="GKY-aS-vsu" sceneMemberID="viewController">
+                <tableViewController id="GKY-aS-vsu" customClass="CommunityTableViewController" customModule="Welp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TSZ-C5-PMe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
