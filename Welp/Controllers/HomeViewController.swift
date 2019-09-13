@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     
     
     let usersRef = Database.database().reference(withPath: "users")
-    let communityRef = Database.database().reference(withPath: "communityMessages")
+//    let communityRef = Database.database().reference(withPath: "communityMessages")
     var loggedInUserID = Auth.auth().currentUser?.uid
     var currentUser: User?
     
@@ -74,7 +74,9 @@ class HomeViewController: UIViewController {
     //MARK: - Save to database
     
     // Load User Info
-    
+    // Loads the current user info
+//    using the the userID and storing the information
+//    into a User Object with the method from the User model
     func loadUserInfo() {
         if let userID = loggedInUserID {
             usersRef.child(userID).observe(.value) { (snapshot) in
@@ -90,8 +92,30 @@ class HomeViewController: UIViewController {
     // Save Share Message
     func saveMessage(newMessage: String) {
         
+        let rootRef = Database.database().reference()
         
-        
+        if let user = currentUser {
+            guard let userID = loggedInUserID else {
+                fatalError("The ID for the user was found to be nil")
+            }
+            let userFullName = user.fName!.capitalized + " " + user.lName!.capitalized
+            
+            let dateShared = dateToString()
+            
+            let messageToBeSaved = Message(shareMessage: newMessage, userShareName: userFullName, creationDate: dateShared, userID: userID)
+            
+            let messageDict = messageToBeSaved.toAnyObject(message: messageToBeSaved) as NSDictionary
+            
+            rootRef.child("communityMessages").childByAutoId().setValue(messageDict as NSDictionary)
+            
+        }
+    }
+    
+    // String from Date formatter function
+    func dateToString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        return formatter.string(from: Date())
     }
     
 }

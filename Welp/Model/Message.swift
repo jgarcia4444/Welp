@@ -8,22 +8,22 @@
 
 import Foundation
 
-class Message {
+class Message: NSObject {
     
     var message: String?
     var userFullName: String?
-    var dateCreated: Date?
+    var dateCreated: String?
     var userID : String?
     
     
-    init(shareMessage: String, userShareName: String, creationDate: Date, userID: String) {
+    init(shareMessage: String, userShareName: String, creationDate: String, userID: String) {
         self.message = shareMessage
         self.userFullName = userShareName
         self.dateCreated = creationDate
         self.userID = userID
     }
     
-    func toAnyObject(message: Message) -> [String: Any] {
+    func toAnyObject(message: Message) -> [String: String] {
         guard let shareMessage = message.message else {
             fatalError("No message was given")
         }
@@ -37,7 +37,7 @@ class Message {
             fatalError("No userID was given")
         }
         
-        let messageDict: [String: Any] = [
+        let messageDict: [String: String] = [
             "message": shareMessage,
             "fullName": fullName,
             "dateCreated": dateCreated,
