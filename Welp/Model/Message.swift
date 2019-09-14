@@ -16,7 +16,8 @@ class Message: NSObject {
     var userID : String?
     
     
-    init(shareMessage: String, userShareName: String, creationDate: String, userID: String) {
+    convenience init(shareMessage: String, userShareName: String, creationDate: String, userID: String) {
+        self.init()
         self.message = shareMessage
         self.userFullName = userShareName
         self.dateCreated = creationDate
@@ -44,6 +45,27 @@ class Message: NSObject {
             "userID": userID
         ]
         return messageDict
+    }
+    
+    func toMessageObject(from messageDictionary: [String: String]) -> Message {
+        
+        guard let fullName = messageDictionary["fullName"] else {
+            fatalError("No full name was found.")
+        }
+        guard let message = messageDictionary["message"] else {
+            fatalError("No message was found.")
+        }
+        guard let messageUserID = messageDictionary["userID"] else {
+            fatalError("No userId was found.")
+        }
+        
+        guard let dateCreated = messageDictionary["dateCreated"] else {
+            fatalError("No userId was found.")
+        }
+        
+        let messageObject = Message(shareMessage: message, userShareName: fullName, creationDate: dateCreated, userID: messageUserID)
+        
+        return messageObject
     }
     
 }
